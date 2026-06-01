@@ -5,9 +5,8 @@ class HelloWorld < Formula
   sha256 "6fcbacba15d416fb63bef145db52505795d7f86cf43a5cf9bf601f30d06bbcc8"
 
   def install
-    # This takes your 'hello-world' shell script from the archive 
-    # and moves it into Homebrew's official binary folder
-    bin.install "hello-world"
+    # Explicitly look inside the folder GitHub creates upon extraction
+    bin.install "homebrew-hello-world-1.0.0/hello-world"
   end
 
   test do

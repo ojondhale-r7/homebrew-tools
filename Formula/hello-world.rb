@@ -5,15 +5,14 @@ class HelloWorld < Formula
   sha256 "6fcbacba15d416fb63bef145db52505795d7f86cf43a5cf9bf601f30d06bbcc8"
 
   def install
-    # Look for the 'hello-world' script anywhere in the extracted directory
-    script_path = Dir["**/hello-world"].first
+    # Look for 'hello-world.sh' anywhere in the extracted directory structure
+    script_path = Dir["**/hello-world.sh"].first
     
     if script_path.nil?
-      # If it still can't find it, fail gracefully and print the contents to help debug
-      odie "Could not find 'hello-world' script. Contents of build directory: #{Dir.entries('.')}"
+      odie "Could not find 'hello-world.sh' script. Contents: #{Dir.entries('.')}"
     end
 
-    # Install the script into Homebrew's binary directory and rename it to 'hello-world'
+    # This installs 'hello-world.sh' but renames it to 'hello-world' in the execution bin
     bin.install script_path => "hello-world"
   end
 
